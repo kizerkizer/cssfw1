@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example</title>
+    <script src="cssfw1.js"></script>
+    <link rel="stylesheet" href="cssfw1.css"/>
+    <style>
+      layout-container {
+        max-width: 1080px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      layout-container > layout-row {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <layout-container>
+      <layout-row style="height: 48px;">
+        <layout-column fractional-width="1/1" style="background-color: crimson"></layout-column>
+      </layout-row>
+      <layout-row style="height: 256px;">
+        <layout-column fractional-width="1/3" style="background-color: pink"></layout-column>
+        <layout-column fractional-width="1/3" style="background-color: green">
+          <layout-row style="height: 50%;">
+            <layout-column fractional-width="1/3" style="background-color: cyan"></layout-column>
+            <layout-column fractional-width="1/3" style="background-color: red"></layout-column>
+            <layout-column fractional-width="1/3" style="background-color: cyan"></layout-column>
+          </layout-row>
+        </layout-column>
+        <layout-column fractional-width="1/3" style="background-color: blue"></layout-column>
+      </layout-row>
+    </layout-container>
+  </body>
+</html>
