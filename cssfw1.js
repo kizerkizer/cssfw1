@@ -1,7 +1,7 @@
-{
+window.onload = () => {
   if (!window) {
     console.warn('cssfw1 no window');
-    goto end;
+    return;
   }
   let ce = window.customElements;
   ce.define('layout-container', class extends HTMLElement {
@@ -12,15 +12,18 @@
   ce.define('layout-column', class extends HTMLElement {
     constructor () {
       super();
-      if ('fractional-width' in this.attributes) {
-        this.handleFractionalWidth();
-      }
+      console.log('layout-column');
+      this.handleFractionalWidth();
     }
     handleFractionalWidth () {
-      if (!('fractional-width' in this.attributes)) {
+      console.log('handleFractionalWidth');
+      let fractionalWidth = this.attributes.getNamedItem('fractional-width');
+      if (!fractionalWidth) {
+        console.warn('no fractional-width');
         return;
       }
-      let [numerator, denominator] = (this.attributes['fractional-width'].value() + '').trim().slice('/').map(str => parseInt(str, 10));
+      let [numerator, denominator] = fractionalWidth.value.trim().split('/').map(str => parseInt(str, 10));
+      console.log(numerator + '/' + denominator);
       if (isNaN(numerator) || isNaN(denominator) || !denominator) {
         console.warn(`cssfw1 invalid fractional width ${numerator}/${denominator} on:`);
         console.warn(this);
@@ -39,4 +42,4 @@
       super();
     }
   });
-} end:
+};
